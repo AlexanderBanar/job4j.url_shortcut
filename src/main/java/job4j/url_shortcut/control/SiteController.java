@@ -69,7 +69,7 @@ public class SiteController {
 
     @PostMapping("/convert")
     public ResponseEntity<CodeDTO> convert(@RequestParam String url) {
-        if (!url.startsWith("https://") || !url.startsWith("http://")) {
+        if (!(url.startsWith("https://") || url.startsWith("http://"))) {
             throw new NullPointerException("url must start with 'https://' or 'http://'");
         }
         String code = credGenerator.getUniqueUrlKey();
