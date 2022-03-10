@@ -61,8 +61,7 @@ public class SiteController {
         }
         Shortcut shortcut = shortcutRepo.findByKey(code);
         String address = shortcut.getValue();
-        shortcut.setCount(shortcut.getCount() + 1);
-        shortcutRepo.save(shortcut);
+        shortcutRepo.updateCount(code);
         return ResponseEntity.status(HttpStatus.FOUND)
                 .location(URI.create(address)).build();
     }
